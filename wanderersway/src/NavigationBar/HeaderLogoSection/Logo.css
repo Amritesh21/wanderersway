@@ -1,0 +1,13 @@
+.LogoContainer{
+    position: relative;
+    height:100%;
+    width: 20%;
+    margin:0px;
+    padding-left: 10px; 
+}
+
+.LogoImage{
+    position:relative;
+    height: 100%;
+    width: 100%;
+}

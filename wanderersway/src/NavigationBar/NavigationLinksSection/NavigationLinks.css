@@ -1,0 +1,21 @@
+.NavigationSection ul{
+    height:50px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.NavigationSection ul li{
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 1px;
+}
+
+.NavigationSection ul li:hover{
+    border-bottom: 5px solid blue;
+    cursor: pointer;
+    
+}

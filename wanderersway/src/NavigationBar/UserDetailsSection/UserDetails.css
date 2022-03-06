@@ -1,0 +1,13 @@
+.userDetails{
+    position: relative;
+    height:100%;
+    width: 5%;
+    margin:0px;
+    padding:0px;
+    cursor: pointer;
+}
+.userIcon{
+    position: relative;
+    height: 80%;
+    width: 80%;
+}
