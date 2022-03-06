@@ -1,0 +1,35 @@
+.OurSpeciality{
+    background-color: rgb(97, 97, 240);
+    color:white;
+}
+.special-items-os{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    color: rgb(255, 72, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.special-items-os img {
+    height: 40%;
+    width: 40%;
+}
+
+.special-items-os h2 {
+    position: relative;
+    top: 70%;
+}
+
+.limit-width{
+    position: relative;
+    width:50%;
+    left: 25%;
+}
+
+.TagLine-OS{
+    text-align: center;
+    padding:20px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
