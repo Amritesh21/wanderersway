@@ -5,6 +5,7 @@ export const UserDetails = () => {
         <div className="userDetails">
             <img className="userIcon" src={UserIcon}/>
             <div className="userDetailsPopUp">
+                <button class='bookAppointment login-button'>Login</button>
             </div>
         </div>
     )

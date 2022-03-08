@@ -1,7 +1,7 @@
 .userDetails{
     position: relative;
     height:100%;
-    width: 5%;
+    width: 5vw;
     margin:0px;
     padding:0px;
     cursor: pointer;
@@ -11,3 +11,26 @@
     height: 80%;
     width: 80%;
 }
+.userDetailsPopUp{
+    position:absolute;
+    height:350px;
+    width:200px;
+    display: none;
+    border: 2px solid rgb(255, 72, 0);
+    background-color: white;
+    z-index: 1;
+    right:20px
+}
+.userDetails:hover > .userDetailsPopUp{
+    display: block;
+    cursor: auto;
+}
+
+.login-button{
+    position: relative;
+    top:70%;
+    padding-left: 25px;
+    padding-right: 25px;
+    left:32%;
+}
+

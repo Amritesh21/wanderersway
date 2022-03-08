@@ -30,7 +30,7 @@
     color:white;
 }
 
-#bookAppointment{
+.bookAppointment{
     border:0px;
     margin-top:20px;
     border:none;
@@ -43,7 +43,7 @@
     color:white;
 }
 
-#bookAppointment:hover{
+.bookAppointment:hover{
     background-color: rgb(0, 255, 179);
     color: blue;
 }
