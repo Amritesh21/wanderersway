@@ -9,7 +9,7 @@ export const WelcomeComponent = () => {
             <div className="sub-component rightComponent">
                 <div className="explore-section">
                     <span>Hey! wanderer feeling bored. Lets explore new colours</span>
-                    <div><button class="bookAppointment">Book An appointment</button></div>
+                    <div><button className="bookAppointment">Book An appointment</button></div>
                 </div>
             </div>
         </div>

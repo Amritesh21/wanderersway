@@ -3,9 +3,9 @@ import { OurSpeciality } from "./OurSpeciality"
 import { WelcomeComponent } from "./WelcomeComponent"
 import { WhyToHireComponent } from "./WhyToHireComponent"
 
-export const HomePageController = () => {
+export const HomePageController = (props) => {
     return(
-        <div className="HomePageController">
+        <div className="HomePageController" style={{filter:props.getFilter}}>
             <WelcomeComponent/>
             <WhyToHireComponent/>
             <OurSpeciality/>

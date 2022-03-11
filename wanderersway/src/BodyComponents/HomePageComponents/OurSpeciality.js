@@ -10,7 +10,7 @@ export const OurSpeciality = () => {
             <div className="TagLine-OS"><h1>Speciality Of Our Services</h1></div>
             <div className="special-items-os">
                 <div>
-                    <div class="limit-width">
+                    <div className="limit-width">
                     <img src={PlanningIcon}/>
                     <h2>Planning</h2>
                     Instead of searching and planning  through countless websites, guidebooks or post from your friends on social media,
@@ -18,7 +18,7 @@ export const OurSpeciality = () => {
                     </div>
                 </div>
                 <div>
-                    <div class="limit-width">
+                    <div className="limit-width">
                     <img src={BudgetIcon}/>
                     <h2>Budget friendly</h2>
                     We through our years of experience in travelling will suggest you the least expensive way of travelling and 
@@ -26,7 +26,7 @@ export const OurSpeciality = () => {
                     </div>
                 </div>
                 <div>
-                    <div class="limit-width">
+                    <div className="limit-width">
                     <img src={ExpertIcon}/>
                     <h2>Emergency support</h2>
                     We have contacts and links at various different locations of world so that in case any you are trap in an
@@ -34,7 +34,7 @@ export const OurSpeciality = () => {
                     </div>
                 </div>
                 <div>
-                    <div class="limit-width">
+                    <div className="limit-width">
                     <img src={EmergencyIcon}/>
                     <h2>Expert advice</h2>
                     We have a team and also have contacts with various experienced travelers so that you will be provided with the best 

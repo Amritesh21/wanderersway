@@ -1,6 +1,6 @@
 import './FooterComponent.css';
 export const FooterComponent = () => {
-    return(<div class="footer">
+    return(<div className="footer">
 
 
     </div>)
