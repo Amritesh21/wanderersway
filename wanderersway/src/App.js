@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { AboutPageBundler } from './BodyComponents/AboutPageComponents/AboutPageBundler';
 import { HomePageController } from './BodyComponents/HomePageComponents/HomepageController';
 import { FooterComponent } from './FooterComponent/FooterComponent';
@@ -15,10 +16,12 @@ function App() {
 
   return (
     <div className="App">
-       <NavigationBar setLogin={setlogin} getFilter={filter} setFilter={setFilter} setscroll={setscroll} pointerEvt={pointerEvt}  setPointerEvt={setPointerEvt}/>
-       <LoginOrSignUp setLogin={setlogin} getLogin={displaylogin} setFilter={setFilter} setscroll={setscroll} setPointerEvt={setPointerEvt}/>
-      {/*<HomePageController getFilter={filter} scroll={scroll} pointerEvt={pointerEvt} setPointerEvt={setPointerEvt}/>*/}
-      <AboutPageBundler/>
+      <NavigationBar setLogin={setlogin} getFilter={filter} setFilter={setFilter} setscroll={setscroll} pointerEvt={pointerEvt}  setPointerEvt={setPointerEvt}/>
+      <LoginOrSignUp setLogin={setlogin} getLogin={displaylogin} setFilter={setFilter} setscroll={setscroll} setPointerEvt={setPointerEvt}/>
+      <Routes>
+        <Route path='/' element={<HomePageController getFilter={filter} scroll={scroll} pointerEvt={pointerEvt} setPointerEvt={setPointerEvt}/>}/>
+        <Route path='/AboutUs' element={<AboutPageBundler/>}/>
+      </Routes>
       <FooterComponent/>
     </div>
   );

@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import './NavigationLinks.css';
 export const NavigationItemsCreation = () => {
     const liClassName = "navItem"; 
@@ -6,33 +6,33 @@ export const NavigationItemsCreation = () => {
         {
             id: "id1",
             section: "Home",
-            link: "/"
+            link: "/",
+            class: 'home'
         },
         {
             id: "id2",
             section: "Our Fees",
-            link: "/fees"
+            link: "/fees",
+            class: "fees"
         },
         {
             id: "id3",
             section: "About Us",
-            link: "/about"
+            link: "/AboutUs",
+            class: "about"
         },
         {
             id: "id4",
-            section: "Our Journey",
-            link: "/journey"
-        },
-        {
-            id: "id5",
             section: "Contact Us",
-            link: "/contact"
+            link: "/contact",
+            class: "contact"
+
         }
     ];
 
     var NavItems =  NavigationLinks.map((NavItems) => 
-        <li key={NavItems.id} className={liClassName}>
-                {NavItems.section}
+        <li key={NavItems.id} className={NavItems.class + " " + liClassName}>
+                <NavLink to={NavItems.link} className='navlink'>{NavItems.section}</NavLink>
         </li>
     )
 

@@ -12,10 +12,20 @@
     padding-left: 20px;
     padding-right: 20px;
     margin: 1px;
+    text-decoration: none;
+}
+
+.navlink{
+    text-decoration: none;
+    color: black;
 }
 
 .NavigationSection ul li:hover{
     border-bottom: 5px solid blue;
     cursor: pointer;
     
+}
+
+li ~ .active{
+    background-color: orange;
 }
