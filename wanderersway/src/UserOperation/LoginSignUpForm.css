@@ -46,6 +46,10 @@
     outline: none;
 }
 
+.box:focus{
+    border: 3px solid orangered;
+}
+
 .login-form-btn{
     position: relative;
     top: 20%;

@@ -1,0 +1,54 @@
+.OurJourney{
+    background-color: blue;
+    height:500px;
+    display: flex;
+    justify-content: center;
+}
+
+.left-component-About{
+    position: relative;
+    background-color: pink;
+    width:50%;
+}
+
+.left-component-About h1{
+    position: absolute;
+    z-index: 5;
+    top: 40%;
+    left: 30%;
+    font-size: 40px;
+    color: blue;
+    border: 4px solid orangered;
+    padding: 30px;
+}
+
+.left-component-About img{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    filter:blur(5px);
+}
+
+.right-component-About{
+    background-color: skyblue;
+    width: 50%;
+}
+
+.content{
+    position: relative;
+    width: 60%;
+    left: 20%;
+    top: 15%;
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    border: 5px solid blue;
+    
+}
+
+.content h2{
+    text-align: center;
+    background: linear-gradient(to right, #ef5350, #f48fb1, #7e57c2, #2196f3, #26c6da, #43a047, #eeff41, #f9a825, #ff5722); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

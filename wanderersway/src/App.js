@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { AboutPageBundler } from './BodyComponents/AboutPageComponents/AboutPageBundler';
 import { HomePageController } from './BodyComponents/HomePageComponents/HomepageController';
 import { FooterComponent } from './FooterComponent/FooterComponent';
 import logo from './logo.svg';
@@ -16,7 +17,8 @@ function App() {
     <div className="App">
        <NavigationBar setLogin={setlogin} getFilter={filter} setFilter={setFilter} setscroll={setscroll} pointerEvt={pointerEvt}  setPointerEvt={setPointerEvt}/>
        <LoginOrSignUp setLogin={setlogin} getLogin={displaylogin} setFilter={setFilter} setscroll={setscroll} setPointerEvt={setPointerEvt}/>
-      <HomePageController getFilter={filter} scroll={scroll} pointerEvt={pointerEvt} setPointerEvt={setPointerEvt}/>
+      {/*<HomePageController getFilter={filter} scroll={scroll} pointerEvt={pointerEvt} setPointerEvt={setPointerEvt}/>*/}
+      <AboutPageBundler/>
       <FooterComponent/>
     </div>
   );
