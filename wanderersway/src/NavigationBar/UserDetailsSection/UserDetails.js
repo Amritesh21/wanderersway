@@ -7,6 +7,8 @@ export const UserDetails = (props) => {
     const login = () => {
         props.setLogin('block');
         props.setFilter('blur(4px)');
+        props.setscroll('fixed');
+        props.setPointerEvt('none');
     }
 
     return(
