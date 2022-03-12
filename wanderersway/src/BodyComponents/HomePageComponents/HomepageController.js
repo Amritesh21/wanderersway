@@ -1,7 +1,7 @@
-import { FooterComponent } from "./FooterComponent"
 import { OurSpeciality } from "./OurSpeciality"
 import { WelcomeComponent } from "./WelcomeComponent"
 import { WhyToHireComponent } from "./WhyToHireComponent"
+import './HomePageController.css';
 
 export const HomePageController = (props) => {
     return(
@@ -9,7 +9,6 @@ export const HomePageController = (props) => {
             <WelcomeComponent/>
             <WhyToHireComponent/>
             <OurSpeciality/>
-            <FooterComponent/>
         </div>
     )
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { HomePageController } from './BodyComponents/HomePageComponents/HomepageController';
+import { FooterComponent } from './FooterComponent/FooterComponent';
 import logo from './logo.svg';
 import { NavigationBar } from './NavigationBar/NavigationBarHeader';
 import { LoginOrSignUp } from './UserOperation/LoginOrSignUp';
@@ -15,7 +16,8 @@ function App() {
     <div className="App">
        <NavigationBar setLogin={setlogin} getFilter={filter} setFilter={setFilter} setscroll={setscroll} pointerEvt={pointerEvt}  setPointerEvt={setPointerEvt}/>
        <LoginOrSignUp setLogin={setlogin} getLogin={displaylogin} setFilter={setFilter} setscroll={setscroll} setPointerEvt={setPointerEvt}/>
-  {/*<HomePageController getFilter={filter} scroll={scroll} pointerEvt={pointerEvt} setPointerEvt={setPointerEvt}/>*/}
+      <HomePageController getFilter={filter} scroll={scroll} pointerEvt={pointerEvt} setPointerEvt={setPointerEvt}/>
+      <FooterComponent/>
     </div>
   );
 }
