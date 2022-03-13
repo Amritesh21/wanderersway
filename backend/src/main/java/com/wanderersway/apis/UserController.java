@@ -32,6 +32,15 @@ public class UserController {
         return userMap;
     }
 
+    @GetMapping("user/getUser")
+    public String getUser(@RequestParam String email){
+        if(userMap.containsKey(email)){
+            return userMap.get(email).toString();
+        }else{
+            return "user not exists";
+        }
+    }
+
     @PutMapping("user/update")
     public String updateUser(@RequestBody User user){
         if(userMap.containsKey(user.getEmailId())) {
