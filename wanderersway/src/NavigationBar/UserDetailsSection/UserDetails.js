@@ -29,9 +29,18 @@ export const LoggedInIcon = (props) => {
 
 export const UserDetails = (props) => {
 
+    const IconHandler = () => {
+        if(props.loginStatus){
+            return <LoggedInIcon {...props}/>
+        }
+        else{
+            return <NotLoggedIcon {...props}/>
+        }
+    }
+
     return(
         <div className="userDetails">
-            <NotLoggedIcon {...props}/>
+            {IconHandler()}
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { AboutPageBundler } from './BodyComponents/AboutPageComponents/AboutPageBundler';
 import { HomePageController } from './BodyComponents/HomePageComponents/HomepageController';
@@ -13,11 +13,20 @@ function App() {
   var [filter, setFilter] = useState('none');
   var [scroll, setscroll] = useState('none');
   var [pointerEvt, setPointerEvt] = useState('auto');
+  var [loggedUserDetails, setLoggedUserDetails] = useState({email:'',fname:'',lname:'',valid:''});
+  var [loginStatus, setLoginStatus] = useState(false);
+
+  useEffect(() => {
+    console.log(loggedUserDetails);
+    if(loggedUserDetails.valid){
+      setLoginStatus(true);
+    }
+  },[loggedUserDetails])
 
   return (
     <div className="App">
-      <NavigationBar setLogin={setlogin} getFilter={filter} setFilter={setFilter} setscroll={setscroll} pointerEvt={pointerEvt}  setPointerEvt={setPointerEvt}/>
-      <LoginOrSignUp setLogin={setlogin} getLogin={displaylogin} setFilter={setFilter} setscroll={setscroll} setPointerEvt={setPointerEvt}/>
+      <NavigationBar setLogin={setlogin} getFilter={filter} setFilter={setFilter} setscroll={setscroll} pointerEvt={pointerEvt}  setPointerEvt={setPointerEvt} loginStatus={loginStatus}/>
+      <LoginOrSignUp setLogin={setlogin} getLogin={displaylogin} setFilter={setFilter} setscroll={setscroll} setPointerEvt={setPointerEvt} loggedUserDetails={loggedUserDetails} setLoggedUserDetails={setLoggedUserDetails} />
       <Routes>
         <Route path='/' element={<HomePageController getFilter={filter} scroll={scroll} pointerEvt={pointerEvt} setPointerEvt={setPointerEvt}/>}/>
         <Route path='/AboutUs' element={<AboutPageBundler/>}/>

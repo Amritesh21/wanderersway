@@ -1,6 +1,7 @@
 import './LoginSignUpForm.css';
 import Logo from '../NavigationBar/wanderer_logo5.PNG'; 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { ApiInteraction } from './ApiInteraction';
 
 export const LoginInputFields = (props) => {
 
@@ -44,6 +45,40 @@ export const LoginOrSignUpForm = (props) => {
     var [login, setLoginDetails] = useState({email :'', password: ''});
     var [email,setEmail] = useState('');
     var [password,setPassword] = useState('');
+    var [loginStatus, setLoginStatus] = useState(false);
+    var [validity,setValidity] = useState(false);
+    var setLoggedUserDetails = props.setLoggedUserDetails;
+    var email;
+
+    useEffect(() => {
+        if(login.email && login.password){
+            
+            setLoginStatus(true);
+            var userLogincred = login
+            ApiInteraction.loginMethod(userLogincred).then((response) => {
+                console.log(response.data);
+                setLoggedUserDetails({email:response.data.user.emailId, fname:response.data.user.firstName
+                , lname:response.data.user.lastName, valid: response.data.validity});
+                setValidity(response.data.validity);
+            })
+        }
+    },[login]);
+
+    useEffect(()=> {
+        if(loginStatus){
+            
+        }
+    },[loginStatus]);
+
+
+    useEffect(() => {
+        if(validity){
+            props.setLogin('none')
+            props.setFilter('none');
+            props.setscroll('static');
+            props.setPointerEvt('auto')
+        }
+    },[validity])
 
     const SignUpMethod = () => {
         if(status === 'Login'){
@@ -74,7 +109,7 @@ export const LoginOrSignUpForm = (props) => {
     }
     
     
-    
+
     return(
         <div className="form loginOrSignUpForm">
             <div className='left-side'>

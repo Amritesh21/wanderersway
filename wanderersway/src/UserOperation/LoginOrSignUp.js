@@ -21,7 +21,7 @@ export const LoginOrSignUp = (props) => {
     return(
         <div className="LoginSignUp" style={{display: getlog}}>
             <button id='close' onClick={() => setOnClickValues()}>X</button>
-            <LoginOrSignUpForm status={userStatus} setStatus={setUserStatus} statusMessage={statusMessage} setStatusMessage={setStatusMessage}/>
+            <LoginOrSignUpForm status={userStatus} setStatus={setUserStatus} statusMessage={statusMessage} setStatusMessage={setStatusMessage} closeWindow={setOnClickValues} {...props}/>
         </div>
     )
 }
