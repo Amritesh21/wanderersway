@@ -2,11 +2,17 @@ import './LoginSignUpForm.css';
 import Logo from '../NavigationBar/wanderer_logo5.PNG'; 
 import { useState } from 'react';
 
-export const LoginInputFields = () => {
+export const LoginInputFields = (props) => {
+
     return(
         <>
-            <input name="userName" placeholder="Enter Username Or Email" type="email" className='box'/>
-            <input name="password" placeholder="Enter Password" className='box'/>
+            <input name="userName" placeholder="Enter Username Or Email" 
+            type="email" className='box' value={props.emailvar} 
+            onChange={(e) => props.setEmail(e.target.value)}/>
+
+            <input name="password" placeholder="Enter Password"
+             type="password" className='box'
+             value={props.passwordvar} onChange={(e) => props.setPassword(e.target.value)}/>
         </>
     )
 }
@@ -33,6 +39,12 @@ export const LoginOrSignUpForm = (props) => {
     const statusMessage = props.statusMessage;
     const setStatusMessage = props.setStatusMessage;
 
+    // user login and signup logic 
+
+    var [login, setLoginDetails] = useState({email :'', password: ''});
+    var [email,setEmail] = useState('');
+    var [password,setPassword] = useState('');
+
     const SignUpMethod = () => {
         if(status === 'Login'){
             setStatus(signUpConst);
@@ -47,7 +59,7 @@ export const LoginOrSignUpForm = (props) => {
 
     const getInputFields = () => {
         if(status === 'Login'){
-        return <LoginInputFields/>
+        return <LoginInputFields emailvar={email} passwordvar={password} setEmail={setEmail} setPassword={setPassword}/>
         }
         else{
             return <SignUpInputFields/>
@@ -56,7 +68,13 @@ export const LoginOrSignUpForm = (props) => {
  
     const LoginOrSignUpClickEvent = (e) => {
         e.preventDefault();
-    } 
+        if(email && password){
+            setLoginDetails({email:email,password:password});
+        }
+    }
+    
+    
+    
     return(
         <div className="form loginOrSignUpForm">
             <div className='left-side'>

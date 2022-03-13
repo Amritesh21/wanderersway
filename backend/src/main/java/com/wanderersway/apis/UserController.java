@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
+@ResponseBody
 @Scope("prototype") // creates different controller objects for each request
 public class UserController {
 
@@ -33,7 +34,7 @@ public class UserController {
     }
 
     @GetMapping("user/getUser")
-    public String getUser(@RequestParam String email){
+    public String getUser(@RequestParam("email") String email){
         if(userMap.containsKey(email)){
             return userMap.get(email).toString();
         }else{
@@ -42,7 +43,7 @@ public class UserController {
     }
 
     @PutMapping("user/update")
-    public String updateUser(@RequestBody User user){
+    public String updateUser( @RequestBody User user){
         if(userMap.containsKey(user.getEmailId())) {
             userMap.put(user.getEmailId(), user);
             return user.toString();
@@ -52,7 +53,7 @@ public class UserController {
     }
 
     @DeleteMapping("user/delete")
-    public String deleteUser(@RequestParam String emailId){
+    public String deleteUser(@RequestParam("email") String emailId){
         if(userMap.containsKey(emailId)){
             userMap.remove(emailId);
             return "User has been successfully removed";

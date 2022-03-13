@@ -5,6 +5,8 @@
     margin:0px;
     padding:0px;
     cursor: pointer;
+    align-self: center;
+    margin-right: 20px;
 }
 .userIcon{
     position: relative;
@@ -27,10 +29,6 @@
 }
 
 .login-button{
-    position: relative;
-    top:70%;
-    padding-left: 25px;
-    padding-right: 25px;
-    left:32%;
+   padding: 10px 20px;
 }
 
