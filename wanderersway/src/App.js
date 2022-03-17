@@ -31,13 +31,15 @@ function App() {
       sessionStorage.setItem('valid', loggedUserDetails.valid);
       if(loggedUserDetails.email !== ''){
         setLoginStatus(true);
+      }else{
+        setLoginStatus(false);
       }
     }
   },[loggedUserDetails,sessionStorage])
 
   return (
     <div className="App">
-      <NavigationBar setLogin={setlogin} getFilter={filter} setFilter={setFilter} setscroll={setscroll} pointerEvt={pointerEvt}  setPointerEvt={setPointerEvt} loginStatus={loginStatus}/>
+      <NavigationBar setLogin={setlogin} getFilter={filter} setFilter={setFilter} setscroll={setscroll} pointerEvt={pointerEvt}  setPointerEvt={setPointerEvt} loginStatus={loginStatus} setLoginStatus={setLoginStatus}/>
       <LoginOrSignUp setLogin={setlogin} getLogin={displaylogin} setFilter={setFilter} setscroll={setscroll} setPointerEvt={setPointerEvt} loggedUserDetails={loggedUserDetails} setLoggedUserDetails={setLoggedUserDetails} />
       <Routes>
         <Route path='/' element={<HomePageController getFilter={filter} scroll={scroll} pointerEvt={pointerEvt} setPointerEvt={setPointerEvt}/>}/>

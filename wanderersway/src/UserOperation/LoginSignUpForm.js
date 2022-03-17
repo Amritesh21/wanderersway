@@ -152,7 +152,7 @@ export const LoginOrSignUpForm = (props) => {
             props.setscroll('static');
             props.setPointerEvt('auto')
         }
-    },[validity])
+    },[sessionStorage.valid])
 
     const SignUpMethod = () => {
         if(status === 'Login'){

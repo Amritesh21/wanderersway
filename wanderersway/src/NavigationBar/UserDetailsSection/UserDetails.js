@@ -22,6 +22,7 @@ export const LoggedInIcon = (props) => {
         sessionStorage.setItem('firstName','');
         sessionStorage.setItem('lastName','');
         sessionStorage.setItem('valid',false);
+        props.setLoginStatus(false);
     }
     return(
         <>
@@ -35,21 +36,14 @@ export const LoggedInIcon = (props) => {
 
 export const UserDetails = (props) => {
 
-    var [renderStatus,setRenderStatus] = useState(props.loginStatus);
-
-    useEffect(() => {
-        console.log(props.loginStatus);
-        setRenderStatus(props.loginStatus);
-    },[props.status])
-
     var IconHandler = useMemo(function updateLogin() {
-        if(renderStatus === "true"){
+        if(props.loginStatus === true){
             return <LoggedInIcon {...props}/>
         }
         else{
             return <NotLoggedIcon {...props}/>
         }
-    },[renderStatus])
+    },[props.loginStatus])
 
     /*const IconHandler = () => {
         if(renderStatus === true){
