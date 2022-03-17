@@ -1,7 +1,7 @@
 import UserIcon from '../userIcon.png';
 import './UserDetails.css';
 import {LoginOrSignUp} from '../../UserOperation/LoginOrSignUp';
-import React, { useState } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 
 export const NotLoggedIcon = (props) => {
     const login = () => {
@@ -17,11 +17,17 @@ export const NotLoggedIcon = (props) => {
 }
 
 export const LoggedInIcon = (props) => {
+    var logout = () => {
+        sessionStorage.setItem('email','');
+        sessionStorage.setItem('firstName','');
+        sessionStorage.setItem('lastName','');
+        sessionStorage.setItem('valid',false);
+    }
     return(
         <>
             <img className="userIcon" src={UserIcon}/>
             <div className="userDetailsPopUp">
-                <button className='bookAppointment login-button' onClick={props.login}>Login</button>
+                <button className='bookAppointment logout-button' onClick={logout}>Logout</button>
             </div>
         </>
     )
@@ -29,18 +35,34 @@ export const LoggedInIcon = (props) => {
 
 export const UserDetails = (props) => {
 
-    const IconHandler = () => {
-        if(props.loginStatus){
+    var [renderStatus,setRenderStatus] = useState(props.loginStatus);
+
+    useEffect(() => {
+        console.log(props.loginStatus);
+        setRenderStatus(props.loginStatus);
+    },[props.status])
+
+    var IconHandler = useMemo(function updateLogin() {
+        if(renderStatus === "true"){
             return <LoggedInIcon {...props}/>
         }
         else{
             return <NotLoggedIcon {...props}/>
         }
-    }
+    },[renderStatus])
+
+    /*const IconHandler = () => {
+        if(renderStatus === true){
+            return <LoggedInIcon {...props}/>
+        }
+        else{
+            return <NotLoggedIcon {...props}/>
+        }
+    }*/
 
     return(
         <div className="userDetails">
-            {IconHandler()}
+            {IconHandler}
         </div>
     )
 }

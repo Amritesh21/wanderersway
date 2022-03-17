@@ -16,7 +16,7 @@
 .right-side{
     position: relative;
     width:50%;
-    background-color: rgb(97, 97, 240);
+    background-color: purple;
     height: 450px;
 }
 
@@ -47,7 +47,7 @@
 }
 
 .box:focus{
-    border: 3px solid orangered;
+    border: 3px solid red;
 }
 
 .login-form-btn{
@@ -57,7 +57,7 @@
     margin: 10px;
     border-radius: 4px;
     border: none;
-    background-color: orangered;
+    background-color: red;
     color: white;
     font-size: 15px;
 }
@@ -65,12 +65,12 @@
 .login-form-btn:hover{
     cursor: pointer;
     background-color: aqua;
-    color: orangered;
+    color: red;
     font-weight: bold;
 }
 
 .newuser-span:hover{
     cursor: pointer;
     font-weight: bold;
-    border-bottom: 2px solid orangered;
+    border-bottom: 2px solid red;
 }

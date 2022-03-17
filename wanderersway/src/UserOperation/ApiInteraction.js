@@ -10,6 +10,10 @@ class ApiInteractionClass {
         userLogincred    
         )
     }
+
+    signUpMethod = (newUser) => {
+        return axios.post(`${BASE_URL}/add`, newUser);
+    }
 }
 
 export var ApiInteraction =  new ApiInteractionClass();

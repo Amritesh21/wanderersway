@@ -1,9 +1,10 @@
-package ResponseClasses;
+package com.wanderersway.apis.ResponseClasses;
 
-import POJOS.User;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
+import com.wanderersway.apis.POJOS.User;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component
 public class LoginResponse {
     private User user;
     private boolean validity;

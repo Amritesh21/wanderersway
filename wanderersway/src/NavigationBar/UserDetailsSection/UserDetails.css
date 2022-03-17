@@ -18,10 +18,11 @@
     height:350px;
     width:200px;
     display: none;
-    border: 2px solid rgb(255, 72, 0);
+    border: 2px solid red;
     background-color: white;
     z-index: 1;
-    right:20px
+    right:20px;
+    animation: heightIn 1s;
 }
 .userDetails:hover > .userDetailsPopUp{
     display: block;
@@ -32,3 +33,7 @@
    padding: 10px 20px;
 }
 
+@keyframes heightIn {
+    from { height: 0px; }
+      to { height: 350px; }      
+}
