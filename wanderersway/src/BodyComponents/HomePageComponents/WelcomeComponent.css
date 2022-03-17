@@ -14,7 +14,7 @@
 }
 
 .rightComponent{
-    background-color: rgb(97, 97, 240);
+    background-color: purple;
 }
 
 .explore-section{
@@ -39,7 +39,7 @@
     font-size: 15px;
     cursor: pointer;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color: rgb(255, 72, 0);
+    background-color: red;
     color:white;
 }
 

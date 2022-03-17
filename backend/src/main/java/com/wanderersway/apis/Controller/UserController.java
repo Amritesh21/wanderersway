@@ -1,15 +1,15 @@
-package com.wanderersway.apis;
+package com.wanderersway.apis.Controller;
 
-import POJOS.User;
-import POJOS.UserLoginCred;
-import ResponseClasses.LoginResponse;
+import com.wanderersway.apis.POJOS.User;
+import com.wanderersway.apis.POJOS.UserLoginCred;
+import com.wanderersway.apis.ResponseClasses.LoginResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,13 +22,20 @@ public class UserController {
     protected static HashMap<String, User> userMap = new HashMap<>();
     private static Logger logger = LoggerFactory.getLogger(UserController.class);
 
+    @Autowired
+    LoginResponse loginResponse; // If methods are of same name then use @Qualifier("loginresponse") where login response is method anme
+
     @PostMapping("add")
-    public String addUser(@RequestBody User user){
+    public LoginResponse addUser(@Valid @RequestBody User user){
         if(userMap.containsKey(user.getEmailId())) {
-            return "User already exists";
+            loginResponse.setUser(null);
+            loginResponse.setValidity(false);
+            return loginResponse;
         }else {
             userMap.put(user.getEmailId(), user);
-            return user.toString();
+            loginResponse.setUser(user);
+            loginResponse.setValidity(true);
+            return loginResponse;
         }
     }
 
@@ -39,7 +46,7 @@ public class UserController {
     }
 
     @GetMapping("getUser")
-    public String getUser(@RequestParam("email") String email){
+    public String getUser(@Valid @RequestParam(value = "email", required = true) String email){
         if(userMap.containsKey(email)){
             return userMap.get(email).toString();
         }else{
@@ -48,7 +55,7 @@ public class UserController {
     }
 
     @PutMapping("update")
-    public String updateUser( @RequestBody User user){
+    public String updateUser(@Valid @RequestBody(required = true) User user){
         if(userMap.containsKey(user.getEmailId())) {
             userMap.put(user.getEmailId(), user);
             return user.toString();
@@ -71,7 +78,7 @@ public class UserController {
     public LoginResponse userLogin(@RequestBody UserLoginCred userLoginCred) {
         String emailId = userLoginCred.getEmail();
         String password = userLoginCred.getPassword();
-        LoginResponse loginResponse = new LoginResponse();
+       // LoginResponse loginResponse = new LoginResponse();
         loginResponse.setValidity(false);
         if ((emailId.trim().equals("") || password.trim().equals("")) && (password == null || emailId == null)) {
             return loginResponse;

@@ -21,7 +21,7 @@
 }
 
 .NavigationSection ul li:hover{
-    border-bottom: 5px solid blue;
+    border-bottom: 5px solid red;
     cursor: pointer;
     
 }

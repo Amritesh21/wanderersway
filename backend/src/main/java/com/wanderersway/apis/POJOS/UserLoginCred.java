@@ -1,4 +1,4 @@
-package POJOS;
+package com.wanderersway.apis.POJOS;
 
 public class UserLoginCred {
     String email;

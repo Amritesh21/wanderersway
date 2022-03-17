@@ -1,7 +1,6 @@
 .AboutUs{
     height: 600px;
     width: 100%;
-    background-color: #ff0000;
     position: relative;
     min-width: 400px;
 }
@@ -20,7 +19,7 @@
     top:10%;
     padding: 40px;
     margin: 20px;
-    border: 5px solid orangered;
+    border: 5px solid red;
     border-radius: 15px;
     opacity: 0.9;
 }
@@ -28,5 +27,5 @@
 .AboutContent h1{
     text-align: center;
     margin-top: 0px;
-    color: orangered;
+    color: red;
 }

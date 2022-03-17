@@ -1,12 +1,13 @@
 .LoginSignUp{
     background-color: white;
-    border: 3px solid orangered;
+    border: 5px solid red;
     height: 450px;
     width: 60vw;
     z-index: 101;
     position: absolute;
     top: 20%;
     left: 20%;
+    animation: fadeIn 1s;
 }
 
 #close{
@@ -20,4 +21,15 @@
     position: absolute;
     left:95%;
     z-index: 15;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+      to { opacity: 0; }
 }

@@ -1,12 +1,19 @@
-package POJOS;
+package com.wanderersway.apis.POJOS;
 
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
+@Component
+@Configuration
 public class User {
 
     String firstName;
     String lastName;
+    @Email
     String emailId;
+    @NotNull
     String password;
 
     public String getFirstName() {
