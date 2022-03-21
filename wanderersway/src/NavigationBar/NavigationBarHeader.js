@@ -5,7 +5,7 @@ import { UserDetails } from './UserDetailsSection/UserDetails';
 
 export const NavigationBar = (props) => {
     return(
-        <div className="header" style={{filter:props.getFilter,pointerEvents:props.pointerEvt}}>
+        <div className="header" style={{filter:props.loginPopUpEffects.filter, pointerEvents:props.loginPopUpEffects.pointerEvt}}>
             <Logo/>
             <NavigationLinks/>
             <UserDetails  {...props}/>

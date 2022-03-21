@@ -5,10 +5,12 @@ import React, { useState, useMemo, useEffect } from 'react';
 
 export const NotLoggedIcon = (props) => {
     const login = () => {
-        props.setLogin('block');
-        props.setFilter('blur(4px)');
-        props.setscroll('fixed');
-        props.setPointerEvt('none');
+        props.setLoginPopUpEffects({
+            displayLoginPopUp: 'block',
+            filter: 'blur(4px)',
+            scroll: 'fixed',
+            pointerEvt: 'none'
+        });
     }
 
     return(
@@ -28,6 +30,8 @@ export const LoggedInIcon = (props) => {
         <>
             <img className="userIcon" src={UserIcon}/>
             <div className="userDetailsPopUp">
+                <div id="userWelcomeMessage">
+                </div>
                 <button className='bookAppointment logout-button' onClick={logout}>Logout</button>
             </div>
         </>

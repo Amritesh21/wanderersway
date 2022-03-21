@@ -33,6 +33,13 @@
    padding: 10px 20px;
 }
 
+.logout-button{
+    position: relative;
+    top: 80%;
+    left: 35%;
+ }
+ 
+
 @keyframes heightIn {
     from { height: 0px; }
       to { height: 350px; }      

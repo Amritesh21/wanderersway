@@ -72,18 +72,16 @@ export const LoginOrSignUpForm = (props) => {
     */
 
 
-    //  const [status, setStatus]  = useState(props.status);
-    var status = props.status;
-    var setStatus = props.setStatus;
+    var status = props.loginOrSignUpFormDisplay.displayStatus;
+    const statusMessage = props.loginOrSignUpFormDisplay.displayMessage;
+
+    // constants
     const loginConst = 'Login'
     const signUpConst = 'Sign Up' 
     const signUpMessage = 'New User Sign-Up Here';
     const LoginMessage = 'Login Here';
-    const statusMessage = props.statusMessage;
-    const setStatusMessage = props.setStatusMessage;
 
     // user login and signup logic 
-
     var [login, setLoginDetails] = useState({email :'', password: ''});
     var [email,setEmail] = useState('');
     var [password,setPassword] = useState('');
@@ -91,14 +89,13 @@ export const LoginOrSignUpForm = (props) => {
     var [loginStatus, setLoginStatus] = useState(false);
     var [validity,setValidity] = useState(false);
     var setLoggedUserDetails = props.setLoggedUserDetails;
-    var email;
 
     useEffect(() => {
         if(status === 'Login'){
             if(login.email && login.password){
                 
                 setLoginStatus(true);
-                var userLogincred = login
+                let userLogincred = login
                 ApiInteraction.loginMethod(userLogincred).then((response) => {
                     console.log(response.data);
                     setLoggedUserDetails({email:response.data.user.emailId, fname:response.data.user.firstName
@@ -107,33 +104,18 @@ export const LoginOrSignUpForm = (props) => {
                 })
             }
         }else{
-
-            if(login.email && login.password){
-
-                if (status === 'Login') {
-                    setLoginStatus(true);
-                    var userLogincred = login
-                    ApiInteraction.loginMethod(userLogincred).then((response) => {
-                        console.log(response.data);
-                        setLoggedUserDetails({
-                            email: response.data.user.emailId, fname: response.data.user.firstName
-                            , lname: response.data.user.lastName, valid: response.data.validity
-                        });
-                        setValidity(response.data.validity);
-                    })
-                }else{
-                    setLoginStatus(true);
-                    var newUser = {emailId:login.email, password:login.password, firstName:'', lastName:''};
-                    console.log(newUser);
-                    ApiInteraction.signUpMethod(newUser).then((response) => {
-                        console.log(response.data);
-                        setLoggedUserDetails({
-                            email: response.data.user.emailId, fname: response.data.user.firstName
-                            , lname: response.data.user.lastName, valid: response.data.validity
-                        });
-                        setValidity(response.data.validity);
-                    })
-                }
+            if (login.email && login.password) {
+                setLoginStatus(true);
+                var newUser = { emailId: login.email, password: login.password, firstName: '', lastName: '' };
+                console.log(newUser);
+                ApiInteraction.signUpMethod(newUser).then((response) => {
+                    console.log(response.data);
+                    setLoggedUserDetails({
+                        email: response.data.user.emailId, fname: response.data.user.firstName
+                        , lname: response.data.user.lastName, valid: response.data.validity
+                    });
+                    setValidity(response.data.validity);
+                })
             } 
         }
     },[login]);
@@ -147,22 +129,26 @@ export const LoginOrSignUpForm = (props) => {
 
     useEffect(() => {
         if(validity){
-            props.setLogin('none')
-            props.setFilter('none');
-            props.setscroll('static');
-            props.setPointerEvt('auto')
+            props.setLoginPopUpEffects({
+                displayLoginPopUp: 'none',
+                filter: 'none',
+                scroll: 'static',
+                pointerEvt: 'auto'
+            });
         }
     },[sessionStorage.valid])
 
     const SignUpMethod = () => {
         if(status === 'Login'){
-            setStatus(signUpConst);
-            setStatusMessage(LoginMessage);
-            props.setStatus(signUpConst);
+            props.setLoginOrSignUpFormDisplay({
+                displayStatus : signUpConst,
+                displayMessage : LoginMessage
+            });
         }else{
-            setStatus(loginConst);
-            setStatusMessage(signUpMessage);
-            props.setStatus(loginConst);
+            props.setLoginOrSignUpFormDisplay({
+                displayStatus : loginConst,
+                displayMessage : signUpMessage
+            });
         }
     }
 
