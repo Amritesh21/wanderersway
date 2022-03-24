@@ -2,6 +2,7 @@ import {  useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { AboutPageBundler } from './BodyComponents/AboutPageComponents/AboutPageBundler';
 import { HomePageController } from './BodyComponents/HomePageComponents/HomepageController';
+import { OurServices } from './BodyComponents/OurServices/Services';
 import { FooterComponent } from './FooterComponent/FooterComponent';
 import useLoginCache from './hooks/useLoginCache';
 import useSetLoginCache from './hooks/useSetLoginCache';
@@ -37,6 +38,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePageController loginPopUpEffects={loginPopUpEffects}/>}/>
         <Route path='/AboutUs' element={<AboutPageBundler loginPopUpEffects={loginPopUpEffects}/>}/>
+        <Route path='/services' element={<OurServices/>}/>
       </Routes>
       <FooterComponent/>
     </div>

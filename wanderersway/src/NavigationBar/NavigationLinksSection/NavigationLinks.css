@@ -20,12 +20,20 @@
     color: black;
 }
 
-.NavigationSection ul li:hover{
+.NavigationSection ul .navItem:hover{
     border-bottom: 5px solid red;
     cursor: pointer;
     
 }
 
-li ~ .active{
-    background-color: orange;
+.activeLink{
+    /*background-color: purple;
+    color: white;
+    border-radius: 10px;*/
+    border-bottom: 5px solid red;
 }
+
+/*.activeLink > a{
+    color: white;
+}
+*/

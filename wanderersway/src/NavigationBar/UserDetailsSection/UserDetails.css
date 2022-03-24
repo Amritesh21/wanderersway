@@ -15,10 +15,10 @@
 }
 .userDetailsPopUp{
     position:absolute;
-    height:350px;
+    height:320px;
     width:200px;
     display: none;
-    border: 2px solid red;
+    border: 3px solid red;
     background-color: white;
     z-index: 1;
     right:20px;
@@ -34,13 +34,58 @@
 }
 
 .logout-button{
-    position: relative;
+    position: absolute;
     top: 80%;
     left: 35%;
+ }
+
+ #userWelcomeMessage img{
+     position: relative;
+     height: 100px;
+    width: 100px;
+    left: 25%;
+    animation: fadeIn 1s;
+ }
+
+ .profile-buttons-container{
+     margin-top: 20px;
+     display: flex;
+     flex-direction: column;
+     position: relative;
+ }
+
+ .profile-button{
+     background-color: red;
+     color: white;
+     font-weight: bold;
+     padding: 10px 50px;
+     outline: none;
+     border: 1px 2px solid purple;
+     width: 100%;
+     position: relative;
+     animation: fadeIn 2s;
+ }
+
+ .profile-button:hover{
+     cursor: pointer;
+     animation: backgroundColor 5s infinite;
+     color: blue;
  }
  
 
 @keyframes heightIn {
     from { height: 0px; }
-      to { height: 350px; }      
+      to { height: 320px; }      
 }
+
+
+@keyframes fadeIn {
+    from { opacity: 0;}
+    to { opacity: 1;}
+}
+
+@keyframes backgroundColor{
+    from {background-color: red; color:white;}
+    to {background-color: aqua; color: blue;}
+}
+
