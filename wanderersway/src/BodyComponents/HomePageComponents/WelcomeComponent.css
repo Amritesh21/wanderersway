@@ -47,3 +47,21 @@
     background-color: rgb(0, 255, 179);
     color: blue;
 }
+
+@media screen and (max-width: 700px) {
+     .main-component{
+         flex-direction: column;
+     }
+     .leftComponent{
+         width: 100%;
+     }
+     .rightComponent{
+         width: 100%;
+     }
+     .sub-component{
+         width: 100vw;
+     }
+     .sub-component img{
+         width: 100vw;
+     }
+  }

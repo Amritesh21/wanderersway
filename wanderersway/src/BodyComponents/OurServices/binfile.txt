@@ -1,0 +1,38 @@
+ {/* <FormControl component="fieldset">
+                <FormLabel component="legend">Travel Companion</FormLabel>
+                <RadioGroup aria-label="Travel Companion" name="travelCompanion" value={value} onChange={handleChange}>
+                    <FormControlLabel value="Single" control={<Radio />} label="Single" />
+                    <FormControlLabel value="Couple" control={<Radio />} label="Couple" />
+                    <FormControlLabel value="Family-Friends" control={<Radio />} label="With Family/Friends" />
+                </RadioGroup>
+            </FormControl>
+            <Typography id="range-slider" gutterBottom>
+                Travel Budget Range
+            </Typography>
+            <Slider
+                value={rangeValue}
+                onChange={handleChangeRange}
+                valueLabelDisplay="auto"
+                aria-labelledby="range-slider"
+                getAriaValueText={valuetext}
+                style={{width: 200}}
+            />
+            <br/>
+            <FormControl component="fieldset" className="continent">
+                <FormLabel component="legend">Select Continent</FormLabel>
+                <FormGroup>
+                    <FormControlLabel
+                        control={<Checkbox  name="gilad" />}
+                        label="Asia"
+                    />
+                    <FormControlLabel
+                        control={<Checkbox  name="jason" />}
+                        label="Europe"
+                    />
+                    <FormControlLabel
+                        control={<Checkbox  name="antoine" />}
+                        label="Africa"
+                    />
+                </FormGroup>
+                
+    </FormControl>*/}

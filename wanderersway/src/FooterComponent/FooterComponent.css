@@ -1,4 +1,5 @@
 .footer{
-    height: 100px;
-    background-color: black;
+    height: 200px;
+    background-color: rgb(241, 210, 210);
+    margin-top: 100px;
 }
