@@ -1,0 +1,48 @@
+.appointmentFormContainer{
+    position: relative;
+    width: 50%;
+    background-color: rgb(243, 217, 217);
+    color: black;
+}
+
+.bookAppointmentComponent{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 50px;
+    margin-bottom: 100px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+
+}
+
+#appointmentTime, #travelmonth{
+    padding: 15px;
+}
+
+.dateFields{
+    margin: 20px;
+}
+
+.dateFields > *{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+.appointmentContainer{
+    display: flex;
+}
+
+.appointmentImageContainer{
+    position: relative;
+    width: 50%;
+}
+
+.appointmentContainer img{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
