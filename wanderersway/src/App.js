@@ -1,6 +1,9 @@
 import {  useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { AboutPageBundler } from './BodyComponents/AboutPageComponents/AboutPageBundler';
+import { DashBoard } from './BodyComponents/Dashboard/DashBoard';
+import { MyAppointment } from './BodyComponents/Dashboard/MyAppointments';
+import { MyProfile } from './BodyComponents/Dashboard/MyProfile';
 import { HomePageController } from './BodyComponents/HomePageComponents/HomepageController';
 import { BookAppointment } from './BodyComponents/OurServices/BookAppointmentComponent';
 import { OurServices } from './BodyComponents/OurServices/Services';
@@ -41,6 +44,9 @@ function App() {
         <Route path='/AboutUs' element={<AboutPageBundler loginPopUpEffects={loginPopUpEffects}/>}/>
         <Route path='/services' element={<OurServices/>}/>
         <Route path="/bookAppointment" element={<BookAppointment/>}/>
+        <Route path='/dashboard' element={<DashBoard/>}/>
+        <Route path="/dashboard/MyAppointments" element={<MyAppointment/>}/>
+        <Route path="/dashboard/MyProfile" element={<MyProfile/>}/>
       </Routes>
       <FooterComponent/>
     </div>

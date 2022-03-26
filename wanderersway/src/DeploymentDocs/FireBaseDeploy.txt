@@ -1,0 +1,6 @@
+1. npm install firebase-tools
+2. run poweshell as administrator and run :-  Set-ExecutionPolicy RemoteSigned
+3. firebase login
+4. firebase init
+5. firebase deploy
+6. run poweshell as administrator and run :-  Set-ExecutionPolicy Default

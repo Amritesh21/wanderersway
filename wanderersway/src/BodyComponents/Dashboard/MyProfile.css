@@ -1,0 +1,24 @@
+.MyProfileContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.left-side-myprofile{
+    width: 50%;
+    background-color: purple;
+}
+
+.left-side-myprofile img{
+    position: relative;
+    top: 40%;
+    left: 10%;
+}
+
+.FormContainer{
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    border: 5px solid red;
+}
