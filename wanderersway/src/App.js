@@ -1,5 +1,5 @@
 import {  useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { AboutPageBundler } from './BodyComponents/AboutPageComponents/AboutPageBundler';
 import { DashBoard } from './BodyComponents/Dashboard/DashBoard';
 import { MyAppointment } from './BodyComponents/Dashboard/MyAppointments';
@@ -43,10 +43,10 @@ function App() {
         <Route path='/' element={<HomePageController loginPopUpEffects={loginPopUpEffects}/>}/>
         <Route path='/AboutUs' element={<AboutPageBundler loginPopUpEffects={loginPopUpEffects}/>}/>
         <Route path='/services' element={<OurServices/>}/>
-        <Route path="/bookAppointment" element={<BookAppointment/>}/>
-        <Route path='/dashboard' element={<DashBoard/>}/>
-        <Route path="/dashboard/MyAppointments" element={<MyAppointment/>}/>
-        <Route path="/dashboard/MyProfile" element={<MyProfile/>}/>
+        <Route path="/bookAppointment" element={loginStatus === false ? <Navigate to='/'/> : <BookAppointment/>}/>
+        <Route path='/dashboard' element={ loginStatus === false ? <Navigate to='/'/> : <DashBoard/>}/>
+        <Route path="/dashboard/MyAppointments" element={loginStatus === false ? <Navigate to='/'/> : <MyAppointment/>}/>
+        <Route path="/dashboard/MyProfile" element={loginStatus === false ? <Navigate to='/'/> : <MyProfile/>}/>
       </Routes>
       <FooterComponent/>
     </div>
@@ -54,3 +54,6 @@ function App() {
 }
 
 export default App;
+
+
+//loginStatus === false ? <Navigate to='/bookAppointment'/> :

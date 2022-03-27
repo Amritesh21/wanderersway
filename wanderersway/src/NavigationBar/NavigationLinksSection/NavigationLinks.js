@@ -11,6 +11,10 @@ export const NavigationItemsCreation = () => {
         sessionStorage.setItem('clickedLink',clickedLink);
     },[clickedLink])
 
+    useEffect(() => {
+        console.log('link')
+    },[sessionStorage])
+
 
     const liClassName = "navItem"; 
     var NavigationLinks = [

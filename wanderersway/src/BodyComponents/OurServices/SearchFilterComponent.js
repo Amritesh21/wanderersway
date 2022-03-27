@@ -2,17 +2,10 @@ import React, { useState } from 'react';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import { Box, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import { lightBlue } from '@material-ui/core/colors';
-import { findByLabelText } from '@testing-library/react';
 
 const useStyles = makeStyles({
     filterButton : {
@@ -25,12 +18,28 @@ const useStyles = makeStyles({
 })
 
 
-export const SearchFilterComponent = () => {
+export const SearchFilterComponent = (props) => {
 
     const classes = useStyles();
 
-    const [travelCompanion, setTravelCompanion] = useState("couple");
-    const [travelBudget, setTravelBudget] = useState([10000, 100000]);
+    const [travelCompanion, setTravelCompanion] = useState("");
+    const [travelBudget, setTravelBudget] = useState([0, 100000]);
+
+    const applyFilter = () => {
+        props.setServiceFilter({
+            travelCompanion: `${travelCompanion}`,
+            travelBudget : travelBudget
+        })
+    } 
+
+    const removeFilters = () => {
+        props.setServiceFilter({
+            travelCompanion: ``,
+            travelBudget : [0,100000]
+        })
+        setTravelCompanion("");
+        setTravelBudget([0, 100000]);
+    }
 
     return(
         <div className="searchFilterComponent">
@@ -61,7 +70,7 @@ export const SearchFilterComponent = () => {
                     <RadioGroup value={travelCompanion} onChange={(e) => setTravelCompanion(e.target.value)}>
                         <FormControlLabel value="single" control={<Radio />} label="Single" />
                         <FormControlLabel value="couple" control={<Radio />} label="Couple" />
-                        <FormControlLabel value="family_friends" control={<Radio />} label="With Family/Friends" />
+                        <FormControlLabel value="family/friends" control={<Radio />} label="With Family/Friends" />
                     </RadioGroup>
                 </Box>
                 <Box className='BudgetRange' 
@@ -80,9 +89,10 @@ export const SearchFilterComponent = () => {
                      value={travelBudget}
                      onChange={(e, newval) => setTravelBudget(newval)}
                      min={0}
-                     max={500000}
+                     max={100000}
                      valueLabelDisplay="auto"
                      aria-labelledby="range-slider"
+                     step={10000}
                     />
                     INR {travelBudget[1]}
                 </Box>
@@ -91,9 +101,9 @@ export const SearchFilterComponent = () => {
                     display: 'flex',
                     alignSelf: 'center'
                 }}>
-                    <Button variant='contained' className={classes.filterButton}>Filter</Button>
+                    <Button variant='contained' className={classes.filterButton} onClick={() => applyFilter()}>Filter</Button>
                     &emsp;
-                    <Button variant='contained' className={classes.filterButton}>Clear</Button>
+                    <Button variant='contained' className={classes.filterButton} onClick={() => removeFilters()}>Remove Filters</Button>
                 </Box>
               
             </Box>

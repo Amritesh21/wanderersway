@@ -1,7 +1,8 @@
 import { Button, FormControlLabel, makeStyles, Radio, RadioGroup, TextField, Typography } from "@material-ui/core"
 import AppointmentImg from './appointmentImage.PNG'; 
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { Navigate, useNavigate } from 'react-router-dom';
 import './BookAppointmentComponent.css'
 
 const useStyles = makeStyles({
@@ -20,9 +21,10 @@ const useStyles = makeStyles({
 
 export const TextFieldForAppointment = (props) => {
     const classes = useStyles();
+
     return(
         <div style={{margin:'20px'}}>
-            <TextField className={classes.appointmentTextField} required label={props.labelVal} variant="outlined"/>
+                <TextField className={classes.appointmentTextField} required label={props.labelVal} variant="outlined" value={props.valueVar} onChange={(e) => props.setValueVar(e.target.value)}/> 
         </div>
     )
 }
@@ -30,6 +32,8 @@ export const TextFieldForAppointment = (props) => {
 export const BookAppointment = () => {
     
     const classes = useStyles()
+
+    const navigate = useNavigate();
 
     const [travelRange, setTravelRange] = useState("Domestic");
     var newDate = new Date();
@@ -44,6 +48,39 @@ export const BookAppointment = () => {
     //newDate.getDate()+"-"+newDate.getMonth()+"-"+newDate.getYear()+" "+newDate.getHours()+":"+newDate.getMinutes()
     const [appointmentDateTime, setAppointmentDateTime] = useState(dateTimeString)
 
+    const [firstName, setFirstName] = useState(sessionStorage.getItem('firstName'));
+    const [lastName, setLastName] = useState(sessionStorage.getItem('lastName'));
+
+    const [appointmentObj, setAppointmentObj] = useState({
+        firstName: '',
+        lastName: '',
+        travelMonth: '',
+        travelBudget: '',
+        travelDestination: '',
+        travelCompanion: '',
+        appointmentDateTime: ''
+    })
+
+    const BookAppointmentFunction = () => {
+        setAppointmentObj({
+            firstName: firstName,
+            lastName: lastName,
+            travelMonth: travelMonth,
+            travelBudget: sessionStorage.getItem('TravelBudget'),
+            travelDestination: sessionStorage.getItem('TravelDestination'),
+            travelCompanion: sessionStorage.getItem('TravelCompanion'),
+            appointmentDateTime: appointmentDateTime
+        })
+    }
+
+
+    useEffect(() => {
+        if(appointmentObj.lastName !==''){
+            sessionStorage.setItem('clickedLink','Home');
+            navigate('/');
+        }
+    },[appointmentObj])
+
     return (
         <div className="appointmentContainer">
             <div className="appointmentImageContainer">
@@ -53,19 +90,19 @@ export const BookAppointment = () => {
                 <form className='bookAppointmentComponent'>
                     <h1>Book An Appointment With Us</h1>
                     <div style={{display:'flex', flexDirection:'row'}}>
-                        <TextFieldForAppointment labelVal={"First Name"} />
-                        <TextFieldForAppointment labelVal={"Last Name"} />
+                        <TextFieldForAppointment labelVal={"First Name"} valueVar={firstName} setValueVar={setFirstName}/>
+                        <TextFieldForAppointment labelVal={"Last Name"} valueVar={lastName} setValueVar={setLastName}/>
                     </div>
-                    <TextFieldForAppointment labelVal={"Travel Destination"} />
+                    <TextFieldForAppointment labelVal={"Travel Destination"} valueVar={sessionStorage.getItem('TravelDestination')}/>
                     <div style={{display:'flex', flexDirection:'row'}}>
-                        <TextFieldForAppointment labelVal={"Travel Budget"} />
-                        <TextFieldForAppointment labelVal={"Travel Companion"} />
+                        <TextFieldForAppointment labelVal={"Travel Budget"} valueVar={sessionStorage.getItem('TravelBudget')}/>
+                        <TextFieldForAppointment labelVal={"Travel Companion"} valueVar={sessionStorage.getItem('TravelCompanion')}/>
                     </div>
-                    <Typography varient="h6">You want to travel ?</Typography>
+                    {/*<Typography varient="h6">You want to travel ?</Typography>
                     <RadioGroup value={travelRange} onChange={(e) => setTravelRange(e.target.value)}>
                         <FormControlLabel value="Domestic" label={"Domestic"} control={<Radio />} />
                         <FormControlLabel value="International" label={"International"} control={<Radio />} />
-                    </RadioGroup>
+                    </RadioGroup>*/}
                     <div class="dateFields" style={{display:'flex'}}>
                         <div style={{display:'flex', flexDirection:'column'}}>
                         <Typography varient="h6">Month and Year of travel</Typography>
@@ -76,7 +113,7 @@ export const BookAppointment = () => {
                         <input type="datetime-local" id="appointmentTime" name="start" min={dateTimeString} value={appointmentDateTime} onChange={(e) => setAppointmentDateTime(e.target.value)} />
                         </div>
                     </div>
-                    <Button variant="contained" className={classes.bookAppointmentFormBtn}>Book Appointment Now</Button>
+                    <Button variant="contained" className={classes.bookAppointmentFormBtn} onClick={() => BookAppointmentFunction()}>Book Appointment Now</Button>
                 </form>
             </div>
         </div>
