@@ -4,6 +4,7 @@ import AppointmentImg from './appointmentImage.PNG';
 import { useEffect, useState } from "react"
 import { Navigate, useNavigate } from 'react-router-dom';
 import './BookAppointmentComponent.css'
+import { ApiInteraction } from "../../UserOperation/ApiInteraction";
 
 const useStyles = makeStyles({
     bookAppointmentFormBtn : {
@@ -58,7 +59,8 @@ export const BookAppointment = () => {
         travelBudget: '',
         travelDestination: '',
         travelCompanion: '',
-        appointmentDateTime: ''
+        appointmentDateTime: '',
+        email: sessionStorage.getItem('email')
     })
 
     const BookAppointmentFunction = () => {
@@ -69,7 +71,8 @@ export const BookAppointment = () => {
             travelBudget: sessionStorage.getItem('TravelBudget'),
             travelDestination: sessionStorage.getItem('TravelDestination'),
             travelCompanion: sessionStorage.getItem('TravelCompanion'),
-            appointmentDateTime: appointmentDateTime
+            appointmentDateTime: appointmentDateTime,
+            email: sessionStorage.getItem('email')
         })
     }
 
@@ -77,6 +80,9 @@ export const BookAppointment = () => {
     useEffect(() => {
         if(appointmentObj.lastName !==''){
             sessionStorage.setItem('clickedLink','Home');
+            ApiInteraction.addAppointment(appointmentObj).then((response) => {
+                console.log(response);
+            })
             navigate('/');
         }
     },[appointmentObj])

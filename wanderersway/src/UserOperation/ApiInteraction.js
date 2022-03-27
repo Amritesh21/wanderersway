@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 
 const BASE_URL = "http://localhost:8082/user";
+const APPOINT_URL = "http://localhost:8082/appointment";
 
 class ApiInteractionClass {
 
@@ -17,6 +18,14 @@ class ApiInteractionClass {
 
     updateMethod = (userVariable) => {
         return axios.put(`${BASE_URL}/update`, userVariable);
+    }
+
+    addAppointment = (appointmentObj) => {
+        return axios.post(`${APPOINT_URL}/add`, appointmentObj);
+    }
+
+    getAppointment = () => {
+        return axios.get(`${APPOINT_URL}/get`);
     }
 }
 

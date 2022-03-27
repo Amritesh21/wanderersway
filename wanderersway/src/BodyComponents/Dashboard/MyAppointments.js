@@ -1,17 +1,9 @@
 import { Button} from "@material-ui/core"
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom"
+import { ApiInteraction } from "../../UserOperation/ApiInteraction";
 
 import './MyAppointments.css';
-
-const Appointments = [
-    {
-        Appointment_For : "Narendra Modi",
-        Appointment_Date : '27-03-2022',
-        Travel_Date : '08-05-2022',
-        Travel_Destination : 'China',
-        Travel_Budget : '20000-200000'
-    }
-]
 
 export const ApoointmentTableHeader = () => {
     return(
@@ -40,12 +32,31 @@ export const AppointmentTableRow = () => {
 
 export const MyAppointment = () => {
 
-    const  AppointmentTableRows = Appointments.map((appointment) => <tr>
-        <td>{appointment.Appointment_For}</td>
-        <td>{appointment.Appointment_Date}</td>
-        <td>{appointment.Travel_Date}</td>
-        <td>{appointment.Travel_Destination}</td>
-        <td>{appointment.Travel_Budget}</td>
+    const [appointments, setAppointments] = useState([
+        {
+            appointmentDateTime: "",
+            email: "",
+            firstName: "",
+            lastName: "",
+            travelBudget: "",
+            travelCompanion: "",
+            travelDestination: "",
+            travelMonth: ""
+        }
+    ])
+
+    useEffect(() => {
+        ApiInteraction.getAppointment().then((response) => {
+            setAppointments(response.data);
+        })
+    },[])
+
+    const  AppointmentTableRows = appointments.map((appointment) => <tr>
+        <td>{appointment.firstName} {appointment.lastName}</td>
+        <td>{appointment.appointmentDateTime}</td>
+        <td>{appointment.travelMonth}</td>
+        <td>{appointment.travelDestination}</td>
+        <td>{appointment.travelBudget}</td>
         <td><Button variant="contained" style={{backgroundColor:'blue',color:'white'}}>Cancel Appointment</Button></td>
     </tr>)
 
