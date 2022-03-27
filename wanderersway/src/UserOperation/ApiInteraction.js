@@ -14,6 +14,10 @@ class ApiInteractionClass {
     signUpMethod = (newUser) => {
         return axios.post(`${BASE_URL}/add`, newUser);
     }
+
+    updateMethod = (userVariable) => {
+        return axios.put(`${BASE_URL}/update`, userVariable);
+    }
 }
 
 export var ApiInteraction =  new ApiInteractionClass();

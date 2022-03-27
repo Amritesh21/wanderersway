@@ -1,15 +1,19 @@
 import { Button } from "@material-ui/core"
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Logo from '../../NavigationBar/wanderer_logo5.PNG'; 
+import { ApiInteraction } from "../../UserOperation/ApiInteraction";
 import { TextFieldForAppointment } from "../OurServices/BookAppointmentComponent"
 import './MyProfile.css';
 
 export const MyProfile = () => {
+
+    const navigate = useNavigate();
+
     const [userVariable, setUserVariable] = useState({
         firstName: sessionStorage.getItem('firstName'),
         lastName: sessionStorage.getItem('lastName'),
-        email: sessionStorage.getItem('email'),
+        emailId: sessionStorage.getItem('email'),
         city: sessionStorage.getItem('city'),
         state: sessionStorage.getItem('state'),
         pin: sessionStorage.getItem('pin'),
@@ -18,26 +22,34 @@ export const MyProfile = () => {
 
     const [firstName,setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [city, setCity] = useState('');
-    const [state, setState] = useState('');
-    const [pin, setPin] = useState('');
-    const [phno, setPhno] = useState('');
+    const [city, setCity] = useState(sessionStorage.getItem('city'));
+    const [state, setState] = useState(sessionStorage.getItem('state'));
+    const [pin, setPin] = useState(sessionStorage.getItem('pin'));
+    const [phno, setPhno] = useState(sessionStorage.getItem('phno'));
 
     const UpdateUserDetails = () => {
         setUserVariable({
             firstName: firstName,
             lastName: lastName,
-            city: city,
-            state: state,
             pin: pin,
             phno: phno,
-            email: sessionStorage.getItem('email')
+            city: city,
+            state: state,
+            emailId: sessionStorage.getItem('email')
         })
     }
 
     useEffect(() => {
+        if(userVariable.firstName !== ''){
         console.log(userVariable.firstName);
         console.log(userVariable.email);
+        console.log(userVariable.pin);
+        var updation = false;
+        ApiInteraction.updateMethod(userVariable).then((response) => {
+            console.log(response.data);
+             navigate('/dashboard');
+        })
+    }
     },[userVariable]);
 
     return(

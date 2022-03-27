@@ -13,8 +13,12 @@ public class User {
     String lastName;
     @Email
     String emailId;
-    @NotNull
     String password;
+
+    String pin;
+    String phno;
+    String city;
+    String state;
 
     public String getFirstName() {
         return firstName;
@@ -46,6 +50,38 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPin() {
+        return pin;
+    }
+
+    public void setPin(String pin) {
+        this.pin = pin;
+    }
+
+    public String getPhno() {
+        return phno;
+    }
+
+    public void setPhno(String phno) {
+        this.phno = phno;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     @Override

@@ -18,7 +18,7 @@ export const OurServices = () => {
 
     return(
         <div className="OurServicesBundler">
-           <ServiceSearchBar/>
+           {/*<ServiceSearchBar/>*/}
            <div className="ServiceBody">
                <SearchFilterComponent serviceFilter={serviceFilter} setServiceFilter={setServiceFilter}/>
                <ServicesViewer serviceFilter={serviceFilter}/>
