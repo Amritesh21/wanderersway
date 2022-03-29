@@ -1,7 +1,7 @@
 import { Button } from "@material-ui/core"
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom"
-import Logo from '../../NavigationBar/wanderer_logo5.PNG'; 
+import Logo from '../../NavigationBar/userIcon.png'; 
 import { ApiInteraction } from "../../UserOperation/ApiInteraction";
 import { TextFieldForAppointment } from "../OurServices/BookAppointmentComponent"
 import './MyProfile.css';

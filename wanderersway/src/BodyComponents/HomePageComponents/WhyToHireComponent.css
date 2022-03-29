@@ -41,3 +41,22 @@
     top: 15%;
     left: 15%;
 }
+
+@media screen and (max-width: 700px) {
+    .main-component{
+        flex-direction: column;
+    }
+    .left-Component{
+        width: 100%;
+    }
+    .right-Component{
+        width: 100%;
+        display: none;
+    }
+    .sub-component{
+        width: 100vw;
+    }
+    .sub-component img{
+        width: 100vw;
+    }
+ }

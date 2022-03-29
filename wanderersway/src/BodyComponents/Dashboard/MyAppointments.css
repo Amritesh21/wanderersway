@@ -5,8 +5,13 @@
 
 
 
-table, th, tr, td {
-    border: 2px solid red;
+table {
+   border: 2px solid black;
+   border-radius: 50px;
+}
+
+tr:hover{
+    background-color: rgb(223, 222, 222);
 }
 
 

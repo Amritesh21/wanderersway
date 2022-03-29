@@ -2,7 +2,7 @@
     height: 600px;
     width: 100%;
     position: relative;
-    min-width: 400px;
+    min-width: 300px;
 }
 
 .AboutUs img{
@@ -29,3 +29,25 @@
     margin-top: 0px;
     color: red;
 }
+
+@media screen and (max-width: 700px) {
+
+    .AboutUs{
+        height: 100vh;
+    }
+
+    .AboutContent {
+        position: absolute;
+        width: 80%;
+        height: 700px;
+        z-index: auto;
+        margin: 0px;
+        overflow-y: auto;
+    }
+
+   
+
+    .AboutUs img{
+        display: none
+    }
+ }

@@ -18,11 +18,11 @@
     height:320px;
     width:200px;
     display: none;
-    border: 3px solid red;
     background-color: white;
     z-index: 1;
     right:20px;
     animation: heightIn 1s;
+    box-shadow: 5px 10px 5px 10px rgb(243, 241, 241);
 }
 .userDetails:hover > .userDetailsPopUp{
     display: block;
@@ -55,21 +55,21 @@
  }
 
  .profile-button{
-     background-color: red;
-     color: white;
+     background-color: white;
+     color: black;
      font-weight: bold;
      padding: 10px 50px;
      outline: none;
-     border: 1px 2px solid purple;
      width: 100%;
      position: relative;
-     animation: fadeIn 2s;
+     outline: none;
+     border: none;
  }
 
  .profile-button:hover{
      cursor: pointer;
-     animation: backgroundColor 5s infinite;
-     color: blue;
+     background-color: rgb(224, 220, 220);
+     color: black;
  }
  
 

@@ -1,17 +1,22 @@
 .MyProfileContainer{
     display: flex;
     justify-content: center;
+    border: 20px 0px solid black;
+    border-radius: 100px;
 }
 
 .left-side-myprofile{
+    position: relative;
     width: 50%;
-    background-color: purple;
+    background-color: rgb(228, 151, 228);
+    border-radius: 80px;
 }
 
 .left-side-myprofile img{
     position: relative;
-    top: 40%;
-    left: 10%;
+    top: 30%;
+    left: 30%;
+    height: 250px;
 }
 
 .FormContainer{
@@ -20,5 +25,4 @@
     flex-direction: column;
     align-content: center;
     align-items: center;
-    border: 5px solid red;
 }

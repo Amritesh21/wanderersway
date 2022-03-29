@@ -1,17 +1,27 @@
 .OurSpeciality{
-    background-color: purple;
-    color:white;
+    background-color: white;
+    color:black;
+    border-top: 4px solid black;
+    border-bottom: 4px solid black;
+    border-radius: 50px;
+    box-shadow: 5px 10px 8px 10px grey;
+    margin: 10px 0px;
 }
 .special-items-os{
     display: flex;
     align-items: center;
     background-color: white;
-    color: red;
+    color: purple;
     padding: 10px;
     margin-bottom: 20px;
 }
 
+.special-items-os div:hover > img{
+    height: 70%;
+}
+
 .special-items-os img {
+    position: relative;
     height: 40%;
     width: 40%;
 }
@@ -33,3 +43,10 @@
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
 }
+
+@media screen and (max-width: 700px) {
+    .special-items-os{
+        flex-direction: column;
+        justify-content: space-around;
+    }
+ }
