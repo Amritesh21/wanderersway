@@ -2,6 +2,7 @@ import './LoginSignUpForm.css';
 import Logo from '../NavigationBar/wanderer_logo5.PNG'; 
 import { useEffect, useState } from 'react';
 import { ApiInteraction } from './ApiInteraction';
+import { SnackbarProvider, useSnackbar} from 'notistack';
 
 export const LoginInputFields = (props) => {
 
@@ -81,6 +82,10 @@ export const LoginOrSignUpForm = (props) => {
     const signUpMessage = 'New User Sign-Up Here';
     const LoginMessage = 'Login Here';
 
+    // sanckbar
+
+    const { enqueueSnackbar } = useSnackbar();
+
     // user login and signup logic 
     var [login, setLoginDetails] = useState({email :'', password: ''});
     var [email,setEmail] = useState('');
@@ -93,19 +98,17 @@ export const LoginOrSignUpForm = (props) => {
     useEffect(() => {
         if(status === 'Login'){
             if(login.email && login.password){
-                
-                setLoginStatus(true);
                 let userLogincred = login
                 ApiInteraction.loginMethod(userLogincred).then((response) => {
                     console.log(response.data);
                     setLoggedUserDetails({email:response.data.user.emailId, fname:response.data.user.firstName
                     , lname:response.data.user.lastName, valid: response.data.validity});
                     setValidity(response.data.validity);
-                })
+                    setLoginStatus(true);
+                }).catch(enqueueSnackbar('User not exists', {variant: 'Error'}))
             }
         }else{
             if (login.email && login.password) {
-                setLoginStatus(true);
                 var newUser = { emailId: login.email, password: login.password, firstName: '', lastName: '' };
                 console.log(newUser);
                 ApiInteraction.signUpMethod(newUser).then((response) => {
@@ -115,16 +118,19 @@ export const LoginOrSignUpForm = (props) => {
                         , lname: response.data.user.lastName, valid: response.data.validity
                     });
                     setValidity(response.data.validity);
-                })
+                    
+                    setLoginStatus(true);
+                }).catch((error) => {enqueueSnackbar('Unable to create User', {variant: 'Error'})})
             } 
         }
     },[login]);
 
     useEffect(()=> {
-        if(loginStatus){
-            
+        if(validity === true){
+            enqueueSnackbar('Sucessful Login', {variant: 'success'});
+            //setLoginStatus(false);
         }
-    },[loginStatus]);
+    },[validity]);
 
 
     useEffect(() => {
@@ -169,6 +175,8 @@ export const LoginOrSignUpForm = (props) => {
                 setLoginDetails({ email: email, password: password });
                 setPassword('');
                 setConfirmPassword('');
+            }else{
+                enqueueSnackbar('Invalid Username or Password', {variant : 'Error'});
             }
         }else{
             if (email && password && confirmPasswword) {
@@ -179,6 +187,8 @@ export const LoginOrSignUpForm = (props) => {
                     setConfirmPassword('');
                     alert('Password Mis-match. Please re-enter your password');
                 }
+            }else{
+                enqueueSnackbar('Invalid Username or Password', {variant: 'Error'});
             }
         }
     }
@@ -201,3 +211,4 @@ export const LoginOrSignUpForm = (props) => {
         </div>
     )
 }
+

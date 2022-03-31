@@ -18,6 +18,7 @@
     width:50%;
     background-color: purple;
     height: 450px;
+    overflow-y: auto;
 }
 
 .left-side img{

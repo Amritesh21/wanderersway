@@ -16,9 +16,7 @@
     margin-bottom: 20px;
 }
 
-.special-items-os div:hover > img{
-    height: 70%;
-}
+
 
 .special-items-os img {
     position: relative;

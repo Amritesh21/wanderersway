@@ -47,7 +47,7 @@ export const MyProfile = () => {
         var updation = false;
         ApiInteraction.updateMethod(userVariable).then((response) => {
             console.log(response.data);
-             navigate('/dashboard');
+             //navigate('/dashboard');
         })
     }
     },[userVariable]);

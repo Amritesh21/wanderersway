@@ -1,3 +1,4 @@
+import { SnackbarProvider } from 'notistack';
 import { useState } from 'react';
 import Logo from '../NavigationBar/wanderer_logo5.PNG'; 
 import './LoginOrSignUp.css'
@@ -27,7 +28,9 @@ export const LoginOrSignUp = (props) => {
     return(
         <div className="LoginSignUp" style={{display: getlog}}>
             <button id='close' onClick={() => setOnClickValues()}>X</button>
+            <SnackbarProvider maxSnack={1}>
             <LoginOrSignUpForm loginOrSignUpFormDisplay={loginOrSignUpFormDisplay} setLoginOrSignUpFormDisplay={setLoginOrSignUpFormDisplay} closeWindow={setOnClickValues} {...props}/>
+            </SnackbarProvider>
         </div>
     )
 }
