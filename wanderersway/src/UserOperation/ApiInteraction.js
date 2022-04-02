@@ -24,8 +24,8 @@ class ApiInteractionClass {
         return axios.post(`${APPOINT_URL}/add`, appointmentObj);
     }
 
-    getAppointment = () => {
-        return axios.get(`${APPOINT_URL}/get`);
+    getAppointment = (email) => {
+        return axios.get(`${APPOINT_URL}/get?email=${email}`);
     }
 }
 

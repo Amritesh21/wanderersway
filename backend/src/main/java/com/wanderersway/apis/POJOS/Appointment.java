@@ -10,6 +10,7 @@ public class Appointment {
     String travelBudget;
     String travelCompanion;
     String email;
+    String status;
 
     public String getEmail() {
         return email;
@@ -73,6 +74,14 @@ public class Appointment {
 
     public void setTravelCompanion(String travelCompanion) {
         this.travelCompanion = travelCompanion;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     /*

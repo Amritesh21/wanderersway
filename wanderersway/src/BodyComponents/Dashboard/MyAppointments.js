@@ -41,12 +41,13 @@ export const MyAppointment = () => {
             travelBudget: "",
             travelCompanion: "",
             travelDestination: "",
-            travelMonth: ""
+            travelMonth: "",
+            status: ""
         }
     ])
 
     useEffect(() => {
-        ApiInteraction.getAppointment().then((response) => {
+        ApiInteraction.getAppointment(sessionStorage.getItem('email')).then((response) => {
             setAppointments(response.data);
         })
     },[])
@@ -57,7 +58,7 @@ export const MyAppointment = () => {
         <td>{appointment.travelMonth}</td>
         <td>{appointment.travelDestination}</td>
         <td>{appointment.travelBudget}</td>
-        <td><Button variant="contained" style={{backgroundColor:'blue',color:'white'}}>Cancel Appointment</Button></td>
+        <td><Button variant="contained" style={{backgroundColor:'blue',color:'white'}}>{appointment.status === 'booked' ? 'Cancel Appointment' : 'Canceled'}</Button></td>
     </tr>)
 
     return(

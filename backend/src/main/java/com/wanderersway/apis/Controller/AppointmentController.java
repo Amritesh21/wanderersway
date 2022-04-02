@@ -1,6 +1,8 @@
 package com.wanderersway.apis.Controller;
 
 import com.wanderersway.apis.POJOS.Appointment;
+import com.wanderersway.apis.Service.AppointmentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -12,16 +14,18 @@ import java.util.List;
 @CrossOrigin("*")
 public class AppointmentController {
 
-    public static List<Appointment> appointmentList= new ArrayList<>();
+    @Autowired
+    AppointmentService appointmentService;
 
     @PostMapping("/add")
-    public Appointment addAppointment(@RequestBody Appointment appointment){
-        appointmentList.add(appointment);
-        return appointment;
+    public List<Appointment> addAppointment(@RequestBody Appointment appointment){
+       int createdStatus = appointmentService.createAppointment(appointment.getEmail(), appointment);
+
+        return appointmentService.fetchAppointment(appointment.getEmail());
     }
 
     @GetMapping("/get")
-    public List<Appointment> getAppointmentList(){
-        return appointmentList;
+    public List<Appointment> getAppointmentList(@RequestParam("email") String email){
+        return appointmentService.fetchAppointment(email);
     }
 }
