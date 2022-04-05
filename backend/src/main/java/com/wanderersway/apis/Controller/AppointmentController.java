@@ -28,4 +28,10 @@ public class AppointmentController {
     public List<Appointment> getAppointmentList(@RequestParam("email") String email){
         return appointmentService.fetchAppointment(email);
     }
+
+    @DeleteMapping("/cancel")
+    public List<Appointment> cancelAppointment(@RequestParam("email") String email){
+        int canceledAppointment = appointmentService.cancelAppointment(email);
+        return appointmentService.fetchAppointment(email);
+    }
 }

@@ -1,3 +1,8 @@
 .DashBoardContainer, .MyAppointmentContainer, .MyProfileContainer{
     margin-top: 100px;
 }
+
+.DashBoardContainer{
+    display: flex;
+    justify-content: center;
+}

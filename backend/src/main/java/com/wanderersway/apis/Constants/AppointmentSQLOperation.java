@@ -9,4 +9,6 @@ public class AppointmentSQLOperation {
     public static String CANCEL_APPOINTMENT = "Update Appointment set status = 'canceled' where email = ?";
 
     public static String GET_APPOINTMENT = "Select * from Appointment where email = ?";
+
+    public static String DELETE_APPOINTMENT = "Delete from Appointment where email = ? and status = 'booked'";
 }

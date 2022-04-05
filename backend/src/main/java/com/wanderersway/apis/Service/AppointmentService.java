@@ -64,4 +64,14 @@ public class AppointmentService {
         return appointmentList;
     }
 
+    public int cancelAppointment(String email){
+        try(PreparedStatement cancelAppointmentQuery = dbConnectionManager.getMySQLConnection().prepareStatement(AppointmentSQLOperation.CANCEL_APPOINTMENT)){
+            cancelAppointmentQuery.setString(1,email);
+            return cancelAppointmentQuery.executeUpdate();
+        }catch(Exception e){
+            logger.error("Error occured while deleting appointment "+ e);
+        }
+        return 0;
+    }
+
 }

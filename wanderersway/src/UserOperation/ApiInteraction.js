@@ -27,6 +27,10 @@ class ApiInteractionClass {
     getAppointment = (email) => {
         return axios.get(`${APPOINT_URL}/get?email=${email}`);
     }
+
+    cancelAppointment = (email) => {
+        return axios.delete(`${APPOINT_URL}/cancel?email=${email}`);
+    }
 }
 
 export var ApiInteraction =  new ApiInteractionClass();

@@ -52,13 +52,19 @@ export const MyAppointment = () => {
         })
     },[])
 
+    const cancelAppointment = () => {
+        ApiInteraction.cancelAppointment(sessionStorage.getItem('email')).then((response) => {
+            setAppointments(response.data);
+        }) 
+    }
+
     const  AppointmentTableRows = appointments.map((appointment) => <tr>
         <td>{appointment.firstName} {appointment.lastName}</td>
         <td>{appointment.appointmentDateTime}</td>
         <td>{appointment.travelMonth}</td>
         <td>{appointment.travelDestination}</td>
         <td>{appointment.travelBudget}</td>
-        <td><Button variant="contained" style={{backgroundColor:'blue',color:'white'}}>{appointment.status === 'booked' ? 'Cancel Appointment' : 'Canceled'}</Button></td>
+        <td><Button variant="contained" onClick={()=> cancelAppointment()} style={{backgroundColor:'blue',color:'white'}}>{appointment.status === 'booked' ? 'Cancel Appointment' : 'Canceled'}</Button></td>
     </tr>)
 
     return(
