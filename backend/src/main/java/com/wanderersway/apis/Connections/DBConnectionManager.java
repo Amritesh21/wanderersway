@@ -14,7 +14,7 @@ public class DBConnectionManager {
     }
 
     public Connection getMySQLConnection() throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/wanderers_way?user=root&password=indira");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/wanderers_way?user=root&password=indira");
         return connection;
     }
 }

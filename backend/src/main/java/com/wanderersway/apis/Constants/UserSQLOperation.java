@@ -1,6 +1,8 @@
 package com.wanderersway.apis.Constants;
 
 public class UserSQLOperation {
+
+    public static final String CREATE_USER_TABLE = "Create table if not exists user(firstName varchar(30), lastName varchar(30), email varchar(30), password varchar(30), pin varchar(10), phno varchar(12), city varchar(30), state varchar(30)) ENGINE=MEMORY";
     public static final String INSERT_USER = "Insert into user(firstName, lastName, email, password, pin, phno, city, state)"+
             " values(?,?,?,?,?,?,?,?);";
 

@@ -26,6 +26,11 @@ public class UserService {
 
     public int createUser(User user){
         User createdUserObj = new User();
+        try(PreparedStatement createUserTable = dbConnectionManager.getMySQLConnection().prepareStatement(UserSQLOperation.CREATE_USER_TABLE)){
+            createUserTable.executeQuery();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         try(PreparedStatement insertStatement = dbConnectionManager.getMySQLConnection().prepareStatement(UserSQLOperation.INSERT_USER)){
             insertStatement.setString(1,user.getFirstName());
             insertStatement.setString(2,user.getLastName());
