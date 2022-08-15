@@ -1,0 +1,22 @@
+wanderersway 2.0 the name is to be changed (not yet decided)
+The web application vision is to be changed from travel advisor and planner to self travel planning 
+
+what features I can add to it?
+
+1. travel expense manager.
+2. travel docs store.
+3. write a blog.
+4. show travel expense analytics.
+5. engage traveler with local tourist businesses like hotels, taxies
+6. travel check list 
+
+Planning development  server side :- 
+1. Design a new architeture of user management.
+2. Analysis for migrating backend from spring boot to jax-rs 2.x
+3. Ananlysis for user authorization for API access and user role management.
+
+Planning development ui :- 
+1. Changing the entire navigation bar ui.
+2. Ananlysis of replacing pictures with graphics
+3. Ananlysis for use of useContext, useMemo and useCallback hooks at required places.
+... rest works are yet remaining to be planned.

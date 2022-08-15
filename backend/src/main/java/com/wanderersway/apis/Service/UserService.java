@@ -22,12 +22,17 @@ public class UserService {
     @Autowired
     DBConnectionManager dbConnectionManager;
 
+    /*
+    docker exec -it backend-app-db-1 bin/bash
+    mysql -uroot -p -A
+     */
+
     Logger logger = LoggerFactory.getLogger(UserService.class);
 
     public int createUser(User user){
         User createdUserObj = new User();
         try(PreparedStatement createUserTable = dbConnectionManager.getMySQLConnection().prepareStatement(UserSQLOperation.CREATE_USER_TABLE)){
-            createUserTable.executeQuery();
+            createUserTable.execute();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

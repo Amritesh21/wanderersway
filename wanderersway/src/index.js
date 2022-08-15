@@ -5,6 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 
+/* app.use(express.static(__dirname));
+app.get("/*", function(req,res){
+  res.sendFile(path.json(__dirname, "index.html"));
+}); */
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
