@@ -1,7 +1,7 @@
 import { Button } from "@material-ui/core"
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom"
-import Logo from '../../NavigationBar/userIcon.png'; 
+// import Logo from '../../NavigationBar/userIcon.png'; 
 import { ApiInteraction } from "../../UserOperation/ApiInteraction";
 import { TextFieldForAppointment } from "../OurServices/BookAppointmentComponent"
 import './MyProfile.css';
@@ -55,7 +55,7 @@ export const MyProfile = () => {
     return(
         <div className="MyProfileContainer">
             <div className='left-side-myprofile'>
-                <img src={Logo}/>
+                
             </div>
             <div className="FormContainer">
             <TextFieldForAppointment labelVal={"Email"} valueVar={sessionStorage.getItem('email')}/>

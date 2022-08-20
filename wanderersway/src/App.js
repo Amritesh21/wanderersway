@@ -10,8 +10,7 @@ import { OurServices } from './BodyComponents/OurServices/Services';
 import { FooterComponent } from './FooterComponent/FooterComponent';
 import useLoginCache from './hooks/useLoginCache';
 import useSetLoginCache from './hooks/useSetLoginCache';
-import { NavigationBar } from './NavigationBar/NavigationBarHeader';
-import { LoginOrSignUp } from './UserOperation/LoginOrSignUp';
+import { RootNavSection } from './NavigationBar/RootNavSection';
 
 function App() {
 
@@ -37,8 +36,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavigationBar loginPopUpEffects={loginPopUpEffects} setLoginPopUpEffects={setLoginPopUpEffects}  loginStatus={loginStatus} setLoginStatus={setLoginStatus}/>
-      <LoginOrSignUp loginPopUpEffects={loginPopUpEffects} setLoginPopUpEffects={setLoginPopUpEffects} loggedUserDetails={loggedUserDetails} setLoggedUserDetails={setLoggedUserDetails} />
+      <RootNavSection />
       <Routes>
         <Route path='/' element={<HomePageController loginPopUpEffects={loginPopUpEffects}/>}/>
         <Route path='/AboutUs' element={<AboutPageBundler loginPopUpEffects={loginPopUpEffects}/>}/>
