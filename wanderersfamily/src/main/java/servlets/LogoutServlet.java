@@ -6,6 +6,7 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.util.Objects.isNull;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,15 +21,18 @@ public class LogoutServlet extends HttpServlet {
     
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
-        HttpSession sessionObj = request.getSession(false);
-        Cookie [] cookies = request.getCookies();
-        String httpSessionId = sessionObj.getId();
-        String username = sessionObj.getAttribute("username").toString();
         boolean sessionValidFlag = false;
-        for(Cookie cookie : cookies ){
-            if(cookie.getValue().equals(username) && cookie.getName().equals("username")){
-                sessionObj.invalidate();
-                sessionValidFlag = true;
+        String httpSessionId = null;
+        HttpSession sessionObj = request.getSession(false);
+        if (!isNull(sessionObj)) {
+            Cookie[] cookies = request.getCookies();
+            httpSessionId = sessionObj.getId();
+            String username = sessionObj.getAttribute("username").toString();
+            for (Cookie cookie : cookies) {
+                if (cookie.getValue().equals(username) && cookie.getName().equals("username")) {
+                    sessionObj.invalidate();
+                    sessionValidFlag = true;
+                }
             }
         }
         response.setContentType("application/json");

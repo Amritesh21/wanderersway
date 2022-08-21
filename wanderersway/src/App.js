@@ -1,12 +1,5 @@
 import {  useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { AboutPageBundler } from './BodyComponents/AboutPageComponents/AboutPageBundler';
-import { DashBoard } from './BodyComponents/Dashboard/DashBoard';
-import { MyAppointment } from './BodyComponents/Dashboard/MyAppointments';
-import { MyProfile } from './BodyComponents/Dashboard/MyProfile';
-import { HomePageController } from './BodyComponents/HomePageComponents/HomepageController';
-import { BookAppointment } from './BodyComponents/OurServices/BookAppointmentComponent';
-import { OurServices } from './BodyComponents/OurServices/Services';
 import { FooterComponent } from './FooterComponent/FooterComponent';
 import useLoginCache from './hooks/useLoginCache';
 import useSetLoginCache from './hooks/useSetLoginCache';
@@ -38,13 +31,12 @@ function App() {
     <div className="App">
       <RootNavSection />
       <Routes>
-        <Route path='/' element={<HomePageController loginPopUpEffects={loginPopUpEffects}/>}/>
-        <Route path='/AboutUs' element={<AboutPageBundler loginPopUpEffects={loginPopUpEffects}/>}/>
+        {/*<Route path='/AboutUs' element={<AboutPageBundler loginPopUpEffects={loginPopUpEffects}/>}/>
         <Route path='/services' element={<OurServices/>}/>
         <Route path="/bookAppointment" element={loginStatus === false ? <Navigate to='/'/> : <BookAppointment/>}/>
         <Route path='/dashboard' element={ loginStatus === false ? <Navigate to='/'/> : <DashBoard/>}/>
         <Route path="/dashboard/MyAppointments" element={loginStatus === false ? <Navigate to='/'/> : <MyAppointment/>}/>
-        <Route path="/dashboard/MyProfile" element={loginStatus === false ? <Navigate to='/'/> : <MyProfile/>}/>
+  <Route path="/dashboard/MyProfile" element={loginStatus === false ? <Navigate to='/'/> : <MyProfile/>}/>*/}
       </Routes>
       <FooterComponent/>
     </div>

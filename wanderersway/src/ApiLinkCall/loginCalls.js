@@ -10,3 +10,9 @@ export const logInAPICall = async (loginPayload, setIsUserLoggedIn) => {
     }
   });
 }
+
+export const validateSession = (setIsUserLoggedIn) => {
+  axios.get(`${BASE_URL}/validatesession`).then((resp) => {
+    setIsUserLoggedIn(resp.data.issessionValid);
+  })
+}

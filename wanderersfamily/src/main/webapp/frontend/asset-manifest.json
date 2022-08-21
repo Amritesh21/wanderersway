@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.4c8edbd8.css",
-    "main.js": "./static/js/main.23c06b1b.js",
+    "main.js": "./static/js/main.c6a88a16.js",
     "static/js/787.6beff7e4.chunk.js": "./static/js/787.6beff7e4.chunk.js",
     "static/media/Journey.jpg": "./static/media/Journey.60a91a20f32fb819cb70.jpg",
     "static/media/appointmentImage.PNG": "./static/media/appointmentImage.9718474714737591d098.PNG",
@@ -14,11 +14,11 @@
     "static/media/wanderer_logo5.PNG": "./static/media/wanderer_logo5.4fc98f93a2b50e88a93e.PNG",
     "index.html": "./index.html",
     "main.4c8edbd8.css.map": "./static/css/main.4c8edbd8.css.map",
-    "main.23c06b1b.js.map": "./static/js/main.23c06b1b.js.map",
+    "main.c6a88a16.js.map": "./static/js/main.c6a88a16.js.map",
     "787.6beff7e4.chunk.js.map": "./static/js/787.6beff7e4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4c8edbd8.css",
-    "static/js/main.23c06b1b.js"
+    "static/js/main.c6a88a16.js"
   ]
 }

@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8080/wanderersfamily";
+const BASE_URL = "/wanderersfamily";
 
-export const logoutCall = () => {
+export const logoutCall = async (setIsUserLoggedIn) => {
     return axios.post(`${BASE_URL}/logout`).then((res) => {
         if(res.data.status === 'success'){
-            console.log(res);
+            setIsUserLoggedIn(false);
         }
     });
 }

@@ -6,12 +6,9 @@ package filters;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.Filter;
+import static java.util.Objects.isNull;
 import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -27,16 +24,18 @@ public class RequestFilter extends HttpFilter {
     @Override
     public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
         
-        HttpSession httpSession = request.getSession(false);
-        String usernameFromSession = httpSession.getAttribute("username").toString();
-        Cookie [] cookies = request.getCookies();
         boolean validationFlag = false;
-        for(Cookie cookie : cookies){
-            if(cookie.getName().equals("username")){
-                if (cookie.getValue().equals(usernameFromSession)) {
-                    validationFlag = true;
+        HttpSession httpSession = request.getSession(false);
+        if (!isNull(httpSession)) {
+            String usernameFromSession = httpSession.getAttribute("username").toString();
+            Cookie[] cookies = request.getCookies();
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("username")) {
+                    if (cookie.getValue().equals(usernameFromSession)) {
+                        validationFlag = true;
+                    }
+
                 }
-                
             }
         }
         if(validationFlag == false){

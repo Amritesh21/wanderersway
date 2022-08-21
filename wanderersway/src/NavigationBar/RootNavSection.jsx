@@ -1,16 +1,18 @@
 import { Box, Popover } from "@mui/material"
 import headerLogo from './wanderer_logo5.PNG';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-import { Button, IconButton, Typography } from "@material-ui/core";
+import { Button, IconButton, Typography } from "@mui/material";
 import React from "react";
-import { UserLoginComponent } from "./UserLoginComponent";
+import { LoginSignUpContainer } from "../UserOperation/LoginSignUpContainer";
 import { logoutCall } from "../ApiLinkCall/logoutCall";
+import { validateSession } from "../ApiLinkCall/loginCalls";
 
 const UserPopup = (props) => {
     const{
         openUserPopup,
         setOpenUserPopup,
         popupAnchor,
+        setIsUserLoggedIn
     } = props; 
     return(
         <Popover
@@ -22,7 +24,7 @@ const UserPopup = (props) => {
           horizontal: 'left',
         }}
         >
-            <Button onClick={() => logoutCall()}>Logout</Button>
+            <Button variant="contained" onClick={() => logoutCall(setIsUserLoggedIn)}>Logout</Button>
         </Popover>
     )
 } 
@@ -32,6 +34,10 @@ export const RootNavSection = () => {
     const [popupAnchor, setPopupAnchor] = React.useState(null);
     const [iseUserLoggedIn, setIsUserLoggedIn] = React.useState(false);
 
+    React.useEffect(() => {
+        validateSession(setIsUserLoggedIn);
+    },[])
+
     const handleOpenUserPopup = (event) => {
         setPopupAnchor(event.currentTarget);
         setOpenUserPopup(true);
@@ -40,7 +46,7 @@ export const RootNavSection = () => {
     return(
         <Box sx={{display: 'flex', justifyContent: 'space-between' }}>
             <Box>
-                <img src={headerLogo} /> 
+                <img src={headerLogo} alt={"wanderersfamily"} style={{width: '250px', maxHeight: '70px'}}/> 
             </Box>
             <Box>
 
@@ -49,8 +55,8 @@ export const RootNavSection = () => {
                 <IconButton onClick={(event) => handleOpenUserPopup(event)}>
                     <PersonOutlineIcon />
                 </IconButton>
-                {iseUserLoggedIn && <UserPopup openUserPopup={openUserPopup} setOpenUserPopup={setOpenUserPopup} popupAnchor={popupAnchor} />}
-                {!iseUserLoggedIn && <UserLoginComponent openUserPopup={openUserPopup} setOpenUserPopup={setOpenUserPopup} setIsUserLoggedIn={setIsUserLoggedIn}/>}
+                {iseUserLoggedIn && <UserPopup openUserPopup={openUserPopup} setOpenUserPopup={setOpenUserPopup} popupAnchor={popupAnchor} setIsUserLoggedIn={setIsUserLoggedIn}/>}
+                {!iseUserLoggedIn && <LoginSignUpContainer openUserPopup={openUserPopup} setOpenUserPopup={setOpenUserPopup} setIsUserLoggedIn={setIsUserLoggedIn}/>}
             </Box>
         </Box>
     )

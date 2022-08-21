@@ -41,6 +41,14 @@
         <servlet-name>logout servlet</servlet-name>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>login validator</servlet-name>
+        <servlet-class>servlets.ValidateLoginSession</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>login validator</servlet-name>
+        <url-pattern>/validatesession</url-pattern>
+    </servlet-mapping>
     <filter>
         <filter-name>requestFilter</filter-name>
         <filter-class>filters.RequestFilter</filter-class>
