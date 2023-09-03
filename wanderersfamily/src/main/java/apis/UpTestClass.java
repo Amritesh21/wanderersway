@@ -14,7 +14,7 @@ import javax.ws.rs.Produces;
  *
  * @author amrit
  */
-@Path("/test")
+@Path("verified/test")
 public class UpTestClass {
     
     @Path("/call1")

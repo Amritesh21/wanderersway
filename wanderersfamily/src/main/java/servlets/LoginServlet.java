@@ -9,7 +9,10 @@ import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -36,8 +39,15 @@ public class LoginServlet extends HttpServlet {
             password = userCredReq.getPassword();
         }
         UserValidityAnalyzer userValidityAnalyzer = UserValidityAnalyzer.getUserValidityAnalyzerObj();
-        boolean isUserValid = userValidityAnalyzer
-                .checkUserCredentials(username, password);
+        boolean isUserValid = false;
+        try {
+            isUserValid = userValidityAnalyzer
+                    .checkUserCredentials(username, password);
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         response.setContentType("application/json");
 
